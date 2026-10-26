@@ -1,0 +1,388 @@
+:root {
+  --bg: #faf6f1;
+  --panel-bg: #ffffff;
+  --accent: #6f4e37;
+  --accent-light: #a9784f;
+  --border: #e0d5c8;
+  --text: #2e2419;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Verdana, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+header {
+  background: var(--accent);
+  color: #fff;
+  padding: 1.25rem 2rem;
+}
+
+header h1 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.5rem;
+}
+
+header p {
+  margin: 0;
+  opacity: 0.85;
+  font-size: 0.9rem;
+}
+
+main {
+  padding: 1.5rem 2rem 3rem;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+button {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+button:hover {
+  background: var(--accent-light);
+}
+
+#properties-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.assumptions-panel {
+  background: var(--panel-bg);
+  border: 1px solid var(--accent-light);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.assumptions-panel h2 {
+  margin-top: 0;
+  font-size: 1.15rem;
+  color: var(--accent);
+}
+
+.assumptions-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.6rem 1rem;
+}
+
+.assumptions-note {
+  margin: -0.5rem 0 1rem;
+  color: #666;
+  font-size: 0.85rem;
+}
+
+.assumptions-panel h3 {
+  margin: 1.25rem 0 0.6rem;
+  font-size: 0.9rem;
+  color: var(--accent);
+}
+
+.assumptions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.6rem 1rem;
+}
+
+.profiles-form {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.customer-profile {
+  min-width: 0;
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.55rem 0.75rem;
+}
+
+.customer-profile h4 {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text);
+}
+
+.customer-profile .field-row:first-of-type {
+  grid-column: 1 / -1;
+}
+
+.mix-total {
+  margin-top: 0.75rem;
+  color: #2d7d2d;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.mix-total.invalid {
+  color: #a3272b;
+}
+
+@media (max-width: 950px) {
+  #properties-container {
+    grid-template-columns: 1fr;
+  }
+
+  .profiles-form {
+    grid-template-columns: 1fr;
+  }
+}
+
+.property-panel {
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+
+.property-panel h2 {
+  margin-top: 0;
+  font-size: 1.15rem;
+  color: var(--accent);
+}
+
+.property-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.field-row {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+.field-row input {
+  margin-top: 0.25rem;
+  padding: 0.4rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.field-row:has(input[type="text"]) {
+  grid-column: span 2;
+}
+
+.staffing-calculator-section {
+  margin-bottom: 1rem;
+  padding: 0.9rem 0.75rem;
+  background: #eef3f7;
+  border-radius: 6px;
+}
+
+.staffing-calculator-section h3 {
+  margin: 0 0 0.6rem 0;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #2f5f7a;
+}
+
+.staffing-calculator-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem 1rem;
+}
+
+.computed-staffing-cost {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.6rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid #cfe0ea;
+  font-size: 0.85rem;
+}
+
+.computed-staffing-value {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #2f5f7a;
+}
+
+.staffing-note,
+.staffing-breakdown {
+  margin: 0.55rem 0 0;
+  color: #5d6870;
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.staffing-breakdown {
+  padding-top: 0.55rem;
+  border-top: 1px solid #cfe0ea;
+}
+
+.ticket-estimates-section {
+  margin-bottom: 1rem;
+  padding: 0.9rem 0.75rem;
+  background: #f7f1ea;
+  border-radius: 6px;
+}
+
+.ticket-estimates-section h3 {
+  margin: 0 0 0.6rem 0;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #8a6d1e;
+}
+
+.ticket-estimates-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem 1rem;
+}
+
+.ticket-pair {
+  grid-column: span 1;
+}
+
+.ticket-pair-inputs {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.25rem;
+}
+
+.ticket-pair-sublabel {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  color: #777;
+}
+
+.ticket-pair-sublabel input {
+  width: 5.5rem;
+  padding: 0.4rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.results {
+  margin-bottom: 1rem;
+}
+
+.headline {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.5rem;
+  padding: 0.9rem 0.75rem;
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+  border: 1px solid transparent;
+}
+
+.headline.positive {
+  background: #eaf6ea;
+  border-color: #bfe3bf;
+}
+
+.headline.negative {
+  background: #fbeaea;
+  border-color: #eec2c2;
+}
+
+.headline.mixed {
+  background: #fbf3e0;
+  border-color: #ecd9a8;
+}
+
+.headline .stat-primary .stat-value {
+  font-size: 1.25rem;
+}
+
+.headline.positive .stat-primary .stat-value {
+  color: #2d7d2d;
+}
+
+.headline.negative .stat-primary .stat-value {
+  color: #a3272b;
+}
+
+.headline.mixed .stat-primary .stat-value {
+  color: #8a6d1e;
+}
+
+.supporting-heading {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #999;
+  margin-bottom: 0.4rem;
+}
+
+.supporting-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: #f7f1ea;
+  border-radius: 6px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-label {
+  font-size: 0.72rem;
+  color: #777;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.stat-value {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.breakeven-canvas {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #fff;
+}
+
+#export-output {
+  width: 100%;
+  height: 220px;
+  margin-top: 1rem;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 0.85rem;
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}

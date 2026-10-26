@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coffee Shop Property Breakeven Comparison</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Coffee Shop Property Comparison</h1>
+    <p>Compare coffee shop locations using per-patron demand, customer mix, operating costs, and breakeven analysis.</p>
+  </header>
+
+  <main>
+    <div class="toolbar">
+      <button id="export-btn" type="button">Export Properties as JS</button>
+    </div>
+
+    <div id="assumptions-container"></div>
+
+    <div id="properties-container"></div>
+
+    <textarea id="export-output" hidden readonly></textarea>
+  </main>
+
+  <template id="field-row-template">
+    <label class="field-row">
+      <span class="field-label"></span>
+      <input />
+    </label>
+  </template>
+
+  <template id="ticket-pair-row-template">
+    <div class="field-row ticket-pair">
+      <span class="field-label"></span>
+      <div class="ticket-pair-inputs">
+        <label class="ticket-pair-sublabel">
+          <input class="monthly-input" type="number" step="50" />
+          <span>patrons/mo</span>
+        </label>
+        <label class="ticket-pair-sublabel">
+          <input class="daily-input" type="number" step="1" />
+          <span>patrons/day</span>
+        </label>
+      </div>
+    </div>
+  </template>
+
+  <template id="assumptions-panel-template">
+    <div class="assumptions-panel">
+      <h2>Shared Sales Assumptions</h2>
+      <p class="assumptions-note">One ticket represents one individual patron, including patrons who arrive as part of a group. Customer mix percentages should total 100%.</p>
+      <form class="assumptions-form" onsubmit="return false;"></form>
+      <p class="assumptions-note">Card processing defaults to 2.9% + $0.30. Since transaction grouping is not modeled, the fixed fee is estimated once per card-paying patron.</p>
+      <h3>Menu Prices and Product Costs</h3>
+      <form class="menu-form assumptions-grid" onsubmit="return false;"></form>
+      <h3>Customer Profiles and Mix</h3>
+      <div class="profiles-form"></div>
+      <div class="mix-total" aria-live="polite"></div>
+    </div>
+  </template>
+
+  <template id="property-panel-template">
+    <div class="property-panel">
+      <h2 class="property-heading"></h2>
+      <form class="property-form" onsubmit="return false;"></form>
+      <div class="staffing-calculator-section">
+        <h3>Staffing &amp; Labor Model</h3>
+        <p class="staffing-note">Peak hours are additional crew coverage. Prep/closing is total labor-hours per day. Crew hours are spread evenly across headcount for overtime estimates; manager and owner hours are costed separately without overtime.</p>
+        <form class="staffing-calculator-form" onsubmit="return false;"></form>
+        <div class="computed-staffing-cost">
+          <span class="field-label">Computed Monthly Staffing Cost</span>
+          <span class="computed-staffing-value"></span>
+        </div>
+        <div class="staffing-breakdown" aria-live="polite"></div>
+      </div>
+      <div class="ticket-estimates-section">
+        <h3>Patron Estimates</h3>
+        <form class="ticket-estimates-form" onsubmit="return false;"></form>
+      </div>
+      <div class="results"></div>
+      <canvas class="breakeven-canvas" width="480" height="320"></canvas>
+    </div>
+  </template>
+
+  <script src="js/data.js"></script>
+  <script src="js/chart.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
